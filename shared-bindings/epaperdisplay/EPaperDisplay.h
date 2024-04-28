@@ -51,6 +51,8 @@ void common_hal_epaperdisplay_epaperdisplay_construct(epaperdisplay_epaperdispla
 
 bool common_hal_epaperdisplay_epaperdisplay_refresh(epaperdisplay_epaperdisplay_obj_t *self);
 
+bool common_hal_epaperdisplay_epaperdisplay_is_zebadge(epaperdisplay_epaperdisplay_obj_t *self);
+
 mp_obj_t common_hal_epaperdisplay_epaperdisplay_get_root_group(epaperdisplay_epaperdisplay_obj_t *self);
 bool common_hal_epaperdisplay_epaperdisplay_set_root_group(epaperdisplay_epaperdisplay_obj_t *self, displayio_group_t *root_group);
 

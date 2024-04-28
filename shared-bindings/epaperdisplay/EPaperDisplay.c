@@ -293,6 +293,16 @@ STATIC mp_obj_t epaperdisplay_epaperdisplay_obj_refresh(mp_obj_t self_in) {
 }
 MP_DEFINE_CONST_FUN_OBJ_1(epaperdisplay_epaperdisplay_refresh_obj, epaperdisplay_epaperdisplay_obj_refresh);
 
+//|     def is_zebadge(self) -> bool:
+//|         """Returns True, if this really is ZeBadge!"""
+//|         ...
+STATIC mp_obj_t epaperdisplay_epaperdisplay_obj_is_zebadge(mp_obj_t self_in) {
+    epaperdisplay_epaperdisplay_obj_t *self = native_display(self_in);
+    bool ok = common_hal_epaperdisplay_epaperdisplay_is_zebadge(self);
+    return mp_obj_new_bool(ok);
+}
+MP_DEFINE_CONST_FUN_OBJ_1(epaperdisplay_epaperdisplay_is_zebadge_obj, epaperdisplay_epaperdisplay_obj_is_zebadge);
+
 //|     time_to_refresh: float
 //|     """Time, in fractional seconds, until the ePaper display can be refreshed."""
 STATIC mp_obj_t epaperdisplay_epaperdisplay_obj_get_time_to_refresh(mp_obj_t self_in) {
@@ -404,6 +414,7 @@ STATIC const mp_rom_map_elem_t epaperdisplay_epaperdisplay_locals_dict_table[] =
     { MP_ROM_QSTR(MP_QSTR_show), MP_ROM_PTR(&epaperdisplay_epaperdisplay_show_obj) },
     { MP_ROM_QSTR(MP_QSTR_update_refresh_mode), MP_ROM_PTR(&epaperdisplay_epaperdisplay_update_refresh_mode_obj) },
     { MP_ROM_QSTR(MP_QSTR_refresh), MP_ROM_PTR(&epaperdisplay_epaperdisplay_refresh_obj) },
+    { MP_ROM_QSTR(MP_QSTR_is_zebadge), MP_ROM_PTR(&epaperdisplay_epaperdisplay_is_zebadge_obj) },
 
     { MP_ROM_QSTR(MP_QSTR_width), MP_ROM_PTR(&epaperdisplay_epaperdisplay_width_obj) },
     { MP_ROM_QSTR(MP_QSTR_height), MP_ROM_PTR(&epaperdisplay_epaperdisplay_height_obj) },

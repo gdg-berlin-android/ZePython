@@ -201,7 +201,7 @@ const uint8_t display_start_sequence[] = {
     TSE, 1, TEMP_INTERNAL | OFFSET_0,
     TCON, 1, 0x22, // tcon setting
     CDI, 1, 0b01001100, // vcom and data interval
-    PLL, 1, HZ_100, // PLL set to 100 Hz
+    PLL, 1, HZ_67, // PLL set to 67 Hz
 
     // Look up tables for voltage sequence for pixel transition
     // Common voltage
@@ -316,10 +316,10 @@ void board_init(void) {
         false,  // color_bits_inverted
         0x000000,  // highlight_color
         refresh_sequence, sizeof(refresh_sequence),  // refresh_display_command
-        1.0,  // refresh_time
+        0.5,  // refresh_time
         &pin_GPIO26,  // busy_pin
         false,  // busy_state
-        2.0, // seconds_per_frame
+        1.0, // seconds_per_frame
         false,  // always_toggle_chip_select
         false, // grayscale
         false, // acep

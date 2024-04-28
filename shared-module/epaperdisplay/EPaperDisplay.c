@@ -207,7 +207,8 @@ STATIC void epaperdisplay_epaperdisplay_start_refresh(epaperdisplay_epaperdispla
 
     common_hal_time_delay_ms(self->start_up_time_ms);
 
-    send_command_sequence(self, true, self->start_sequence, self->start_sequence_len);
+    send_command_sequence(self, false, self->start_sequence, self->start_sequence_len);
+
     displayio_display_core_start_refresh(&self->core);
 }
 
@@ -411,8 +412,11 @@ STATIC bool _clean_area(epaperdisplay_epaperdisplay_obj_t *self) {
     return true;
 }
 
-bool common_hal_epaperdisplay_epaperdisplay_refresh(epaperdisplay_epaperdisplay_obj_t *self) {
+bool common_hal_epaperdisplay_epaperdisplay_is_zebadge(epaperdisplay_epaperdisplay_obj_t *self) {
+	return true;
+}
 
+bool common_hal_epaperdisplay_epaperdisplay_refresh(epaperdisplay_epaperdisplay_obj_t *self) {
     if (self->refreshing && self->busy.base.type == &digitalio_digitalinout_type) {
         if (common_hal_digitalio_digitalinout_get_value(&self->busy) != self->busy_state) {
             supervisor_disable_tick();
